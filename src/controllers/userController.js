@@ -1,10 +1,8 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-console.log(process.env.JWT_SECRET)
 
 exports.register = async (req, res) => {
-    console.log("Hit..")
     try {
         const { name, email, password } = req.body;
         const existingUser = await User.findOne({ email });
@@ -20,7 +18,6 @@ exports.register = async (req, res) => {
 };
 
 exports.login = async (req, res) => {
-    console.log("===>>")
     try {
         const { email, password } = req.body;
         const user = await User.findOne({ email });
